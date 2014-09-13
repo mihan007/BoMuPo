@@ -74,7 +74,7 @@ enum availablePlayingMode {
     }
 
     NSTimeInterval currentPlaybackTime = [GVMusicPlayerController sharedInstance].currentPlaybackTime;
-    self.progressSlider.value = (float)currentPlaybackTime;
+    self.progressSlider.value = (float) currentPlaybackTime;
     self.trackCurrentPlaybackTimeLabel.text = [NSString stringFromTime:currentPlaybackTime];
     if (self.currentMode == modeAudiobook) {
         self.currentAudiobookProgress = currentPlaybackTime;
@@ -166,7 +166,11 @@ enum availablePlayingMode {
     if ([GVMusicPlayerController sharedInstance].playbackState == MPMusicPlaybackStatePlaying) {
         [[GVMusicPlayerController sharedInstance] pause];
     } else {
-        [[GVMusicPlayerController sharedInstance] play];
+        if (self.currentMode == modeStart) {
+            [self play:nil];
+        } else {
+            [[GVMusicPlayerController sharedInstance] play];
+        }
     }
 
     [self adjustPlaybackButton];
