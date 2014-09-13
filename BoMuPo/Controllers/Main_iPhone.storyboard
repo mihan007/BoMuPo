@@ -37,15 +37,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SlN-YL-qcK">
                                 <rect key="frame" x="16" y="120" width="288" height="288"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqD-wX-QiH">
-                                <rect key="frame" x="16" y="498" width="288" height="60"/>
-                                <state key="normal" title="AudioBook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAudiobook:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="StP-K0-bWi"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xy-iv-Pze">
                                 <rect key="frame" x="16" y="90" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -58,8 +49,25 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aX3-xn-s7v">
+                                <rect key="frame" x="14" y="441" width="292" height="31"/>
+                                <connections>
+                                    <action selector="progressChanged:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pFn-eC-5e1"/>
+                                    <action selector="progressChanged:" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="r5e-ie-zHx"/>
+                                    <action selector="progressEnd" destination="vXZ-lx-hvc" eventType="valueChanged" id="Mxt-FV-QFx"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqD-wX-QiH">
+                                <rect key="frame" x="16" y="523" width="288" height="25"/>
+                                <state key="normal" title="AudioBook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAudiobook:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="StP-K0-bWi"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5s-oL-ped">
-                                <rect key="frame" x="16" y="430" width="288" height="60"/>
+                                <rect key="frame" x="16" y="490" width="288" height="25"/>
                                 <state key="normal" title="Songs">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -74,6 +82,7 @@
                         <outlet property="artistLabel" destination="Mcq-au-8eA" id="wHd-U6-fTp"/>
                         <outlet property="chooseView" destination="kh9-bI-dsS" id="2mx-iB-AbC"/>
                         <outlet property="imageView" destination="SlN-YL-qcK" id="Vca-62-gSj"/>
+                        <outlet property="progressSlider" destination="aX3-xn-s7v" id="k2p-76-JRY"/>
                         <outlet property="songLabel" destination="6Pe-oX-g3e" id="qZq-Vt-ZTc"/>
                         <outlet property="trackCurrentPlaybackTimeLabel" destination="2xy-iv-Pze" id="fZ0-cd-7dF"/>
                         <outlet property="trackLengthLabel" destination="88G-vG-Cg1" id="mFy-Sr-bIG"/>

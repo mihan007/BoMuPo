@@ -20,15 +20,17 @@ enum availablePlayingMode {
 @interface ViewController () <GVMusicPlayerControllerDelegate, MPMediaPickerControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *chooseView;
-@property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) IBOutlet UILabel *songLabel;
 @property (strong, nonatomic) IBOutlet UILabel *artistLabel;
 @property (strong, nonatomic) IBOutlet UILabel *trackLengthLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *trackCurrentPlaybackTimeLabel;
+@property (strong, nonatomic) IBOutlet UISlider *progressSlider;
 
-@property (nonatomic) NSTimeInterval currentAudiobookProgress;
-@property (nonatomic) enum availablePlayingMode currentMode;
+@property NSTimeInterval currentAudiobookProgress;
+@property enum availablePlayingMode currentMode;
+@property BOOL panningProgress;
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -62,7 +64,12 @@ enum availablePlayingMode {
 }
 
 - (void)timedJob {
+    if (self.panningProgress) {
+        return;
+    }
+    
     NSTimeInterval currentPlaybackTime = [GVMusicPlayerController sharedInstance].currentPlaybackTime;
+    self.progressSlider.value = currentPlaybackTime;
     self.trackCurrentPlaybackTimeLabel.text = [NSString stringFromTime:currentPlaybackTime];
     if (self.currentMode == modeAudiobook) {
         self.currentAudiobookProgress = currentPlaybackTime;
@@ -122,6 +129,19 @@ enum availablePlayingMode {
 #endif
 }
 
+- (IBAction)progressChanged:(UISlider *)sender {
+    // While dragging the progress slider around, we change the time label,
+    // but we're not actually changing the playback time yet.
+    self.panningProgress = YES;
+    self.trackCurrentPlaybackTimeLabel.text = [NSString stringFromTime:sender.value];
+}
+
+- (IBAction)progressEnd {
+    // Only when dragging is done, we change the playback time.
+    [GVMusicPlayerController sharedInstance].currentPlaybackTime = self.progressSlider.value;
+    self.panningProgress = NO;
+}
+
 #pragma mark - AVMusicPlayerControllerDelegate
 
 - (void)musicPlayer:(GVMusicPlayerController *)musicPlayer playbackStateChanged:(MPMusicPlaybackState)playbackState previousPlaybackState:(MPMusicPlaybackState)previousPlaybackState {
@@ -133,6 +153,8 @@ enum availablePlayingMode {
     // Time labels
     NSTimeInterval trackLength = [[nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
     self.trackLengthLabel.text = [NSString stringFromTime:trackLength];
+    self.progressSlider.value = (float)(self.currentMode == modeSongs ? 0 : [self getCurrentAudioBookProgress]);
+    self.progressSlider.maximumValue = (float)trackLength;
     
     // Labels
     self.songLabel.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
