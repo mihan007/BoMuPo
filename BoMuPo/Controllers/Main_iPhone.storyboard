@@ -59,20 +59,11 @@
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqD-wX-QiH">
                                 <rect key="frame" x="16" y="523" width="288" height="25"/>
-                                <state key="normal" title="AudioBook">
+                                <state key="normal" title="Songs / AudioBook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playAudiobook:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="StP-K0-bWi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5s-oL-ped">
-                                <rect key="frame" x="16" y="490" width="288" height="25"/>
-                                <state key="normal" title="Songs">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playSongs:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="K1Y-4M-irN"/>
+                                    <action selector="play:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="StP-K0-bWi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppc-iQ-uWB">
@@ -95,6 +86,7 @@
                         <outlet property="playButton" destination="ppc-iQ-uWB" id="1SZ-B4-dvn"/>
                         <outlet property="progressSlider" destination="aX3-xn-s7v" id="k2p-76-JRY"/>
                         <outlet property="songLabel" destination="6Pe-oX-g3e" id="qZq-Vt-ZTc"/>
+                        <outlet property="songsBookButton" destination="UqD-wX-QiH" id="DTf-sb-hPG"/>
                         <outlet property="trackCurrentPlaybackTimeLabel" destination="2xy-iv-Pze" id="fZ0-cd-7dF"/>
                         <outlet property="trackLengthLabel" destination="88G-vG-Cg1" id="mFy-Sr-bIG"/>
                     </connections>

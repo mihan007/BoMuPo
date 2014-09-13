@@ -20,19 +20,20 @@ enum availablePlayingMode {
 
 @interface ViewController () <GVMusicPlayerControllerDelegate, MPMediaPickerControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIView *chooseView;
-@property (strong, nonatomic) IBOutlet UILabel *songLabel;
-@property (strong, nonatomic) IBOutlet UILabel *artistLabel;
-@property (strong, nonatomic) IBOutlet UILabel *trackLengthLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UILabel *trackCurrentPlaybackTimeLabel;
-@property (strong, nonatomic) IBOutlet UISlider *progressSlider;
-@property (strong, nonatomic) IBOutlet UIButton *playButton;
+@property(strong, nonatomic) IBOutlet UIView *chooseView;
+@property(strong, nonatomic) IBOutlet UILabel *songLabel;
+@property(strong, nonatomic) IBOutlet UILabel *artistLabel;
+@property(strong, nonatomic) IBOutlet UILabel *trackLengthLabel;
+@property(strong, nonatomic) IBOutlet UIImageView *imageView;
+@property(strong, nonatomic) IBOutlet UILabel *trackCurrentPlaybackTimeLabel;
+@property(strong, nonatomic) IBOutlet UISlider *progressSlider;
+@property(strong, nonatomic) IBOutlet UIButton *playButton;
+@property(strong, nonatomic) IBOutlet UIButton *songsBookButton;
 
 @property NSTimeInterval currentAudiobookProgress;
 @property enum availablePlayingMode currentMode;
 @property BOOL panningProgress;
-@property (strong, nonatomic) NSTimer *timer;
+@property(strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -46,7 +47,7 @@ enum availablePlayingMode {
     [self.view bringSubviewToFront:self.chooseView];
     self.currentAudiobookProgress = [self getCurrentAudioBookProgress];
     self.currentMode = modeStart;
-    
+
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timedJob) userInfo:nil repeats:YES];
     [self.timer fire];
 }
@@ -59,6 +60,7 @@ enum availablePlayingMode {
     [super viewWillAppear:animated];
     [[GVMusicPlayerController sharedInstance] addDelegate:self];
     [self adjustPlaybackButton];
+    [self adjustSongsBookButton];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -70,9 +72,9 @@ enum availablePlayingMode {
     if (self.panningProgress) {
         return;
     }
-    
+
     NSTimeInterval currentPlaybackTime = [GVMusicPlayerController sharedInstance].currentPlaybackTime;
-    self.progressSlider.value = currentPlaybackTime;
+    self.progressSlider.value = (float)currentPlaybackTime;
     self.trackCurrentPlaybackTimeLabel.text = [NSString stringFromTime:currentPlaybackTime];
     if (self.currentMode == modeAudiobook) {
         self.currentAudiobookProgress = currentPlaybackTime;
@@ -106,33 +108,24 @@ enum availablePlayingMode {
 
 #pragma mark - IBActions
 
-- (IBAction)playSongs:(id)sender {
-    if (self.currentMode == modeSongs) {
+- (void)playSongs {
+    [GVMusicPlayerController sharedInstance].shuffleMode = MPMusicShuffleModeSongs;
+    self.currentMode = modeSongs;
+    [self adjustSongsBookButton];
+
 #if !(TARGET_IPHONE_SIMULATOR)
-        [[GVMusicPlayerController sharedInstance] play];
-        [self adjustPlaybackButton];
+    MPMediaQuery *query = [MPMediaQuery songsQuery];
+    [[GVMusicPlayerController sharedInstance] setQueueWithQuery:query];
+    [[GVMusicPlayerController sharedInstance] play];
+    [self adjustPlaybackButton];
 #endif
-    } else {
-        [GVMusicPlayerController sharedInstance].shuffleMode = MPMusicShuffleModeSongs;
-        self.currentMode = modeSongs;
-        
-#if !(TARGET_IPHONE_SIMULATOR)
-        MPMediaQuery *query = [MPMediaQuery songsQuery];
-        [[GVMusicPlayerController sharedInstance] setQueueWithQuery:query];
-        [[GVMusicPlayerController sharedInstance] play];
-        [self adjustPlaybackButton];
-#endif
-    }
 }
 
-- (IBAction)playAudiobook:(id)sender {
-    if ((self.currentMode == modeAudiobook) && ([GVMusicPlayerController sharedInstance].playbackState == MPMusicPlaybackStatePlaying)) {
-        return;
-    }
-    
+- (void)playAudiobook {
     [GVMusicPlayerController sharedInstance].shuffleMode = MPMusicShuffleModeOff;
     self.currentMode = modeAudiobook;
-    
+    [self adjustSongsBookButton];
+
 #if !(TARGET_IPHONE_SIMULATOR)
     MPMediaQuery *query = [MPMediaQuery audiobooksQuery];
     [[GVMusicPlayerController sharedInstance] setQueueWithQuery:query];
@@ -140,6 +133,20 @@ enum availablePlayingMode {
     [GVMusicPlayerController sharedInstance].currentPlaybackTime = [self getCurrentAudioBookProgress];
     [self adjustPlaybackButton];
 #endif
+}
+
+- (IBAction)play:(id)sender {
+    switch (self.currentMode) {
+        case modeStart:
+            [self playAudiobook];
+            break;
+        case modeSongs:
+            [self playAudiobook];
+            break;
+        case modeAudiobook:
+            [self playSongs];
+            break;
+    }
 }
 
 - (IBAction)progressChanged:(UISlider *)sender {
@@ -159,17 +166,14 @@ enum availablePlayingMode {
     if ([GVMusicPlayerController sharedInstance].playbackState == MPMusicPlaybackStatePlaying) {
         [[GVMusicPlayerController sharedInstance] pause];
     } else {
-        if (self.currentMode == modeSongs) {
-            [self playSongs:nil];
-        } else {
-            [self playAudiobook:nil];
-        }
+        [[GVMusicPlayerController sharedInstance] play];
     }
-    
+
     [self adjustPlaybackButton];
 }
 
 #pragma mark - UI
+
 - (void)adjustPlaybackButton {
     if ([GVMusicPlayerController sharedInstance].playbackState == MPMusicPlaybackStatePlaying) {
         [self.playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
@@ -178,10 +182,24 @@ enum availablePlayingMode {
     }
 }
 
+- (void)adjustSongsBookButton {
+    switch (self.currentMode) {
+        case modeStart:
+            [self.songsBookButton setTitle:@"Слушать книгу" forState:UIControlStateNormal];
+            break;
+        case modeSongs:
+            [self.songsBookButton setTitle:@"Слушать книгу" forState:UIControlStateNormal];
+            break;
+        case modeAudiobook:
+            [self.songsBookButton setTitle:@"Петь музыку" forState:UIControlStateNormal];
+            break;
+    }
+}
+
 #pragma mark - AVMusicPlayerControllerDelegate
 
 - (void)musicPlayer:(GVMusicPlayerController *)musicPlayer playbackStateChanged:(MPMusicPlaybackState)playbackState previousPlaybackState:(MPMusicPlaybackState)previousPlaybackState {
-    
+
 }
 
 - (void)musicPlayer:(GVMusicPlayerController *)musicPlayer trackDidChange:(MPMediaItem *)nowPlayingItem previousTrack:(MPMediaItem *)previousTrack {
@@ -189,13 +207,13 @@ enum availablePlayingMode {
     // Time labels
     NSTimeInterval trackLength = [[nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
     self.trackLengthLabel.text = [NSString stringFromTime:trackLength];
-    self.progressSlider.value = (float)(self.currentMode == modeSongs ? 0 : [self getCurrentAudioBookProgress]);
-    self.progressSlider.maximumValue = (float)trackLength;
-    
+    self.progressSlider.value = (float) (self.currentMode == modeSongs ? 0 : [self getCurrentAudioBookProgress]);
+    self.progressSlider.maximumValue = (float) trackLength;
+
     // Labels
     self.songLabel.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
     self.artistLabel.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
-    
+
     // Artwork
     MPMediaItemArtwork *artwork = [nowPlayingItem valueForProperty:MPMediaItemPropertyArtwork];
     if (artwork != nil) {
@@ -223,6 +241,7 @@ enum availablePlayingMode {
 }
 
 #pragma mark - AudioBook resume support
+
 - (NSTimeInterval)getCurrentAudioBookProgress {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *result = [userDefaults objectForKey:kCurrentAudiobookProgressSetting];
