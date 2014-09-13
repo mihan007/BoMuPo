@@ -13,6 +13,7 @@
 #define kCurrentAudiobookProgressSetting @"currentAudiobookProgressSetting"
 
 enum availablePlayingMode {
+    modeStart,
     modeSongs,
     modeAudiobook
 };
@@ -26,6 +27,7 @@ enum availablePlayingMode {
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *trackCurrentPlaybackTimeLabel;
 @property (strong, nonatomic) IBOutlet UISlider *progressSlider;
+@property (strong, nonatomic) IBOutlet UIButton *playButton;
 
 @property NSTimeInterval currentAudiobookProgress;
 @property enum availablePlayingMode currentMode;
@@ -43,7 +45,7 @@ enum availablePlayingMode {
     [super viewDidLoad];
     [self.view bringSubviewToFront:self.chooseView];
     self.currentAudiobookProgress = [self getCurrentAudioBookProgress];
-    self.currentMode = modeSongs;
+    self.currentMode = modeStart;
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timedJob) userInfo:nil repeats:YES];
     [self.timer fire];
@@ -56,6 +58,7 @@ enum availablePlayingMode {
     // objects in memory.
     [super viewWillAppear:animated];
     [[GVMusicPlayerController sharedInstance] addDelegate:self];
+    [self adjustPlaybackButton];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -98,23 +101,32 @@ enum availablePlayingMode {
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
     [[GVMusicPlayerController sharedInstance] remoteControlReceivedWithEvent:receivedEvent];
+    [self adjustPlaybackButton];
 }
 
 #pragma mark - IBActions
 
 - (IBAction)playSongs:(id)sender {
-    [GVMusicPlayerController sharedInstance].shuffleMode = MPMusicShuffleModeSongs;
-    self.currentMode = modeSongs;
-    
+    if (self.currentMode == modeSongs) {
 #if !(TARGET_IPHONE_SIMULATOR)
-    MPMediaQuery *query = [MPMediaQuery songsQuery];
-    [[GVMusicPlayerController sharedInstance] setQueueWithQuery:query];
-    [[GVMusicPlayerController sharedInstance] play];
+        [[GVMusicPlayerController sharedInstance] play];
+        [self adjustPlaybackButton];
 #endif
+    } else {
+        [GVMusicPlayerController sharedInstance].shuffleMode = MPMusicShuffleModeSongs;
+        self.currentMode = modeSongs;
+        
+#if !(TARGET_IPHONE_SIMULATOR)
+        MPMediaQuery *query = [MPMediaQuery songsQuery];
+        [[GVMusicPlayerController sharedInstance] setQueueWithQuery:query];
+        [[GVMusicPlayerController sharedInstance] play];
+        [self adjustPlaybackButton];
+#endif
+    }
 }
 
 - (IBAction)playAudiobook:(id)sender {
-    if (self.currentMode == modeAudiobook) {
+    if ((self.currentMode == modeAudiobook) && ([GVMusicPlayerController sharedInstance].playbackState == MPMusicPlaybackStatePlaying)) {
         return;
     }
     
@@ -126,6 +138,7 @@ enum availablePlayingMode {
     [[GVMusicPlayerController sharedInstance] setQueueWithQuery:query];
     [[GVMusicPlayerController sharedInstance] play];
     [GVMusicPlayerController sharedInstance].currentPlaybackTime = [self getCurrentAudioBookProgress];
+    [self adjustPlaybackButton];
 #endif
 }
 
@@ -140,6 +153,29 @@ enum availablePlayingMode {
     // Only when dragging is done, we change the playback time.
     [GVMusicPlayerController sharedInstance].currentPlaybackTime = self.progressSlider.value;
     self.panningProgress = NO;
+}
+
+- (IBAction)playButtonPressed {
+    if ([GVMusicPlayerController sharedInstance].playbackState == MPMusicPlaybackStatePlaying) {
+        [[GVMusicPlayerController sharedInstance] pause];
+    } else {
+        if (self.currentMode == modeSongs) {
+            [self playSongs:nil];
+        } else {
+            [self playAudiobook:nil];
+        }
+    }
+    
+    [self adjustPlaybackButton];
+}
+
+#pragma mark - UI
+- (void)adjustPlaybackButton {
+    if ([GVMusicPlayerController sharedInstance].playbackState == MPMusicPlaybackStatePlaying) {
+        [self.playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+    } else {
+        [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - AVMusicPlayerControllerDelegate

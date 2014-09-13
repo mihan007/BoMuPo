@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7A1059CDD505490C88A04C84 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D61E01362DD444BBFD6E388 /* libPods.a */; };
 		93B7832019C463E4008CF9E3 /* NSString+TimeToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B7831F19C463E4008CF9E3 /* NSString+TimeToString.m */; };
+		93B7832319C49CF9008CF9E3 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 93B7832119C49CF9008CF9E3 /* pause.png */; };
+		93B7832419C49CF9008CF9E3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 93B7832219C49CF9008CF9E3 /* play.png */; };
 		9A02F77A5711492A9BF635F8 /* libPods-Specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6EBF96DA068437B82FA86E4 /* libPods-Specs.a */; };
 		BD304C8118E672EA0034105E /* DummySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD304C8018E672EA0034105E /* DummySpec.m */; };
 		BD304C8318E77F7E0034105E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BD304C8218E77F7E0034105E /* Settings.bundle */; };
@@ -56,6 +58,8 @@
 		62199233C093473EAAB5265B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		93B7831E19C463E4008CF9E3 /* NSString+TimeToString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeToString.h"; sourceTree = "<group>"; };
 		93B7831F19C463E4008CF9E3 /* NSString+TimeToString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeToString.m"; sourceTree = "<group>"; };
+		93B7832119C49CF9008CF9E3 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		93B7832219C49CF9008CF9E3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BD304C8018E672EA0034105E /* DummySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummySpec.m; sourceTree = "<group>"; };
 		BD304C8218E77F7E0034105E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		BD35136419BE274A00A19841 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		BD3CA8BA18D8A68600C993E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93B7832119C49CF9008CF9E3 /* pause.png */,
+				93B7832219C49CF9008CF9E3 /* play.png */,
 				BDDB996D18C3943B003EBC42 /* Images.xcassets */,
 				BD3CA8BB18D8A6D200C993E0 /* default.css */,
 				BD304C8218E77F7E0034105E /* Settings.bundle */,
@@ -436,8 +442,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B7832419C49CF9008CF9E3 /* play.png in Resources */,
 				BDDB996E18C3943B003EBC42 /* Images.xcassets in Resources */,
 				BD6951ED18EA54BB00F2F410 /* Main_iPad.storyboard in Resources */,
+				93B7832319C49CF9008CF9E3 /* pause.png in Resources */,
 				BD6951EE18EA54BB00F2F410 /* Main_iPhone.storyboard in Resources */,
 				BD304C8318E77F7E0034105E /* Settings.bundle in Resources */,
 				BD3CA8BC18D8A6D200C993E0 /* default.css in Resources */,

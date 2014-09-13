@@ -75,6 +75,16 @@
                                     <action selector="playSongs:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="K1Y-4M-irN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppc-iQ-uWB">
+                                <rect key="frame" x="16" y="120" width="288" height="288"/>
+                                <state key="normal" image="pause.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="play.png"/>
+                                <connections>
+                                    <action selector="playButtonPressed" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZoM-Xa-7BX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -82,6 +92,7 @@
                         <outlet property="artistLabel" destination="Mcq-au-8eA" id="wHd-U6-fTp"/>
                         <outlet property="chooseView" destination="kh9-bI-dsS" id="2mx-iB-AbC"/>
                         <outlet property="imageView" destination="SlN-YL-qcK" id="Vca-62-gSj"/>
+                        <outlet property="playButton" destination="ppc-iQ-uWB" id="1SZ-B4-dvn"/>
                         <outlet property="progressSlider" destination="aX3-xn-s7v" id="k2p-76-JRY"/>
                         <outlet property="songLabel" destination="6Pe-oX-g3e" id="qZq-Vt-ZTc"/>
                         <outlet property="trackCurrentPlaybackTimeLabel" destination="2xy-iv-Pze" id="fZ0-cd-7dF"/>
@@ -92,6 +103,10 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="pause.png" width="50" height="50"/>
+        <image name="play.png" width="50" height="50"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
