@@ -12,6 +12,7 @@
 		93B7832319C49CF9008CF9E3 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 93B7832119C49CF9008CF9E3 /* pause.png */; };
 		93B7832419C49CF9008CF9E3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 93B7832219C49CF9008CF9E3 /* play.png */; };
 		9A02F77A5711492A9BF635F8 /* libPods-Specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6EBF96DA068437B82FA86E4 /* libPods-Specs.a */; };
+		A450089D3533C62ED4843EED /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = A45002B43213D2A5E2AA86D5 /* default.css */; };
 		BD304C8118E672EA0034105E /* DummySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD304C8018E672EA0034105E /* DummySpec.m */; };
 		BD304C8318E77F7E0034105E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BD304C8218E77F7E0034105E /* Settings.bundle */; };
 		BD35136619BE274A00A19841 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BD35136519BE274A00A19841 /* Constants.m */; };
@@ -60,6 +61,7 @@
 		93B7831F19C463E4008CF9E3 /* NSString+TimeToString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeToString.m"; sourceTree = "<group>"; };
 		93B7832119C49CF9008CF9E3 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		93B7832219C49CF9008CF9E3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		A45002B43213D2A5E2AA86D5 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		BD304C8018E672EA0034105E /* DummySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummySpec.m; sourceTree = "<group>"; };
 		BD304C8218E77F7E0034105E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		BD35136419BE274A00A19841 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				BD574B0318EA481500EDD66F /* Views */,
 				BDB71B2518EA46ED00579B97 /* Application */,
 				BD574AFC18EA481500EDD66F /* Other Sources */,
+				A45002B43213D2A5E2AA86D5 /* default.css */,
 			);
 			path = BoMuPo;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				BD6951EE18EA54BB00F2F410 /* Main_iPhone.storyboard in Resources */,
 				BD304C8318E77F7E0034105E /* Settings.bundle in Resources */,
 				BD3CA8BC18D8A6D200C993E0 /* default.css in Resources */,
+				A450089D3533C62ED4843EED /* default.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
