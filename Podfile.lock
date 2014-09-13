@@ -1,0 +1,146 @@
+PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Aperitif (0.1.0):
+    - MZFormSheetController (~> 2.3.3)
+  - Asterism (1.0.0)
+  - CocoaLumberjack (2.0.0-beta):
+    - CocoaLumberjack/CLI
+    - CocoaLumberjack/Core
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/CLI (2.0.0-beta):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Core (2.0.0-beta)
+  - CocoaLumberjack/Extensions (2.0.0-beta):
+    - CocoaLumberjack/Core
+  - CrashlyticsFramework (2.2.4)
+  - CrashlyticsLumberjack (1.0.1):
+    - CocoaLumberjack/Core
+  - Expecta (0.3.1)
+  - FormatterKit (1.7.0):
+    - FormatterKit/AddressFormatter
+    - FormatterKit/ArrayFormatter
+    - FormatterKit/ColorFormatter
+    - FormatterKit/LocationFormatter
+    - FormatterKit/NameFormatter
+    - FormatterKit/OrdinalNumberFormatter
+    - FormatterKit/TimeIntervalFormatter
+    - FormatterKit/UnitOfInformationFormatter
+    - FormatterKit/URLRequestFormatter
+  - FormatterKit/AddressFormatter (1.7.0)
+  - FormatterKit/ArrayFormatter (1.7.0)
+  - FormatterKit/ColorFormatter (1.7.0)
+  - FormatterKit/LocationFormatter (1.7.0)
+  - FormatterKit/NameFormatter (1.7.0)
+  - FormatterKit/OrdinalNumberFormatter (1.7.0)
+  - FormatterKit/TimeIntervalFormatter (1.7.0)
+  - FormatterKit/UnitOfInformationFormatter (1.7.0)
+  - FormatterKit/URLRequestFormatter (1.7.0)
+  - libextobjc (0.4):
+    - libextobjc/EXTADT
+    - libextobjc/EXTConcreteProtocol
+    - libextobjc/EXTKeyPathCoding
+    - libextobjc/EXTNil
+    - libextobjc/EXTSafeCategory
+    - libextobjc/EXTScope
+    - libextobjc/EXTSelectorChecking
+    - libextobjc/EXTSynthesize
+    - libextobjc/NSInvocation+EXT
+    - libextobjc/NSMethodSignature+EXT
+    - libextobjc/RuntimeExtensions
+    - libextobjc/UmbrellaHeader
+  - libextobjc/EXTADT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTConcreteProtocol (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTKeyPathCoding (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTNil (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSafeCategory (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSelectorChecking (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSynthesize (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSInvocation+EXT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSMethodSignature+EXT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.4)
+  - libextobjc/UmbrellaHeader (0.4)
+  - MZAppearance (1.1.3)
+  - MZFormSheetController (2.3.6):
+    - MZAppearance (~> 1.1.3)
+    - MZFormSheetController/Core
+  - MZFormSheetController/Core (2.3.6):
+    - MZAppearance (~> 1.1.3)
+  - OCHamcrest (4.0.1)
+  - OCMockito (1.3.0):
+    - OCHamcrest (~> 4.0)
+    - TPWeakProxy (~> 1.0)
+  - PixateFreestyle (2.1.4)
+  - Sidecar (0.1.3):
+    - CocoaLumberjack/Core
+    - Sidecar/Non-ARC
+  - Sidecar/Non-ARC (0.1.3):
+    - CocoaLumberjack/Core
+  - Specta (0.2.1)
+  - TPWeakProxy (1.0.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - Aperitif
+  - Asterism
+  - CocoaLumberjack
+  - CrashlyticsFramework
+  - CrashlyticsLumberjack
+  - Expecta
+  - FormatterKit
+  - libextobjc
+  - OCMockito
+  - PixateFreestyle
+  - Sidecar
+  - Specta
+
+SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  Aperitif: 99dea58a312b05a20a891b44463698edc6147a11
+  Asterism: 26783427dc5b3ff144cbabb87485456458797350
+  CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
+  CrashlyticsFramework: 0c28a2c07a51b7691e6668b83824b0b0be77f307
+  CrashlyticsLumberjack: b2a184319db06a070ccc176c07c503720ebedf81
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  FormatterKit: 846ca773b9daaa13b50ae0df1f4a328d030d859c
+  libextobjc: ba42e4111f433273a886cd54f0ddaddb7f62f82f
+  MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
+  MZFormSheetController: a7dce224ce8bd9015abeabca8cb6cde0d49d3fe3
+  OCHamcrest: b464725bbb48d0f1cd9c6f4ec3cb35fe0c4f2b94
+  OCMockito: eca2670b3ce4a457d316b046a36d6f2b980a4da7
+  PixateFreestyle: bb8fc8ce1ebc2355852b369a6e2a6f2931c4ed71
+  Sidecar: 909b17d7bc55882dc22e87f4d83bc1fa2b426fb6
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  TPWeakProxy: a23251ba7fbe268c93f809cc072ef834f5063798
+
+COCOAPODS: 0.33.1
