@@ -1,5 +1,8 @@
 platform :ios, '7.0'
 
+#The power of AVPlayer with the simplicity of MPMusicPlayerController
+pod 'GVMusicPlayerController'
+
 # Crush Utility Belt
 pod 'Sidecar'
 

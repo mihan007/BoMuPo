@@ -55,6 +55,7 @@ PODS:
   - FormatterKit/TimeIntervalFormatter (1.7.0)
   - FormatterKit/UnitOfInformationFormatter (1.7.0)
   - FormatterKit/URLRequestFormatter (1.7.0)
+  - GVMusicPlayerController (0.4.0)
   - libextobjc (0.4):
     - libextobjc/EXTADT
     - libextobjc/EXTConcreteProtocol
@@ -118,6 +119,7 @@ DEPENDENCIES:
   - CrashlyticsLumberjack
   - Expecta
   - FormatterKit
+  - GVMusicPlayerController
   - libextobjc
   - OCMockito
   - PixateFreestyle
@@ -133,6 +135,7 @@ SPEC CHECKSUMS:
   CrashlyticsLumberjack: b2a184319db06a070ccc176c07c503720ebedf81
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   FormatterKit: 846ca773b9daaa13b50ae0df1f4a328d030d859c
+  GVMusicPlayerController: 68ae7d4dbc2f2359840129dfbe39132cb4693983
   libextobjc: ba42e4111f433273a886cd54f0ddaddb7f62f82f
   MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
   MZFormSheetController: a7dce224ce8bd9015abeabca8cb6cde0d49d3fe3

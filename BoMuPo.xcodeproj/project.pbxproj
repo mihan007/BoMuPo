@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A1059CDD505490C88A04C84 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D61E01362DD444BBFD6E388 /* libPods.a */; };
+		93B7832019C463E4008CF9E3 /* NSString+TimeToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B7831F19C463E4008CF9E3 /* NSString+TimeToString.m */; };
 		9A02F77A5711492A9BF635F8 /* libPods-Specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6EBF96DA068437B82FA86E4 /* libPods-Specs.a */; };
 		BD304C8118E672EA0034105E /* DummySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BD304C8018E672EA0034105E /* DummySpec.m */; };
 		BD304C8318E77F7E0034105E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BD304C8218E77F7E0034105E /* Settings.bundle */; };
@@ -53,6 +54,8 @@
 		0BCADCBD2726475BBDA55E55 /* Pods-Specs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specs.xcconfig"; path = "../../Pods/Pods-Specs.xcconfig"; sourceTree = "<group>"; };
 		1D61E01362DD444BBFD6E388 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		62199233C093473EAAB5265B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		93B7831E19C463E4008CF9E3 /* NSString+TimeToString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeToString.h"; sourceTree = "<group>"; };
+		93B7831F19C463E4008CF9E3 /* NSString+TimeToString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeToString.m"; sourceTree = "<group>"; };
 		BD304C8018E672EA0034105E /* DummySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummySpec.m; sourceTree = "<group>"; };
 		BD304C8218E77F7E0034105E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		BD35136419BE274A00A19841 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 		BD574AFA18EA47FA00EDD66F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				93B7831E19C463E4008CF9E3 /* NSString+TimeToString.h */,
+				93B7831F19C463E4008CF9E3 /* NSString+TimeToString.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -391,10 +396,17 @@
 		BDDB994718C3943B003EBC42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Mikhail Kuklin";
 				TargetAttributes = {
+					BDDB994E18C3943B003EBC42 = {
+						DevelopmentTeam = S954FPQ92B;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					BDDB997218C3943B003EBC42 = {
 						TestTargetID = BDDB994E18C3943B003EBC42;
 					};
@@ -600,6 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD35136619BE274A00A19841 /* Constants.m in Sources */,
+				93B7832019C463E4008CF9E3 /* NSString+TimeToString.m in Sources */,
 				BDDB996318C3943B003EBC42 /* AppDelegate.m in Sources */,
 				BD934CD419C211F600B48551 /* AssetCatalogIdentifiers.m in Sources */,
 				BD934CD519C211F600B48551 /* StoryboardIdentifiers.m in Sources */,
@@ -646,10 +659,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .prod.debug;
 				BUNDLE_NAME_SUFFIX = " (Prod)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug_Production;
 		};
@@ -690,10 +707,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .prod.debug;
 				BUNDLE_NAME_SUFFIX = " (Prod)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Test_Production;
 		};
@@ -735,11 +756,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .prod.adhoc;
 				BUNDLE_NAME_SUFFIX = " (Prod)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = AdHoc_Production;
 		};
@@ -781,10 +805,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .prod.adhoc;
 				BUNDLE_NAME_SUFFIX = " (Prod)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Profile_Production;
 		};
@@ -826,11 +854,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .staging.adhoc;
 				BUNDLE_NAME_SUFFIX = " (Staging)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = AdHoc_Staging;
 		};
@@ -882,10 +913,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .staging.debug;
 				BUNDLE_NAME_SUFFIX = " (Staging)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug_Staging;
 		};
@@ -897,11 +932,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = "";
 				BUNDLE_NAME_SUFFIX = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Distribution;
 		};
@@ -962,10 +1000,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .staging.adhoc;
 				BUNDLE_NAME_SUFFIX = " (Staging)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Profile_Staging;
 		};
@@ -1006,10 +1048,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID_SUFFIX = .staging.debug;
 				BUNDLE_NAME_SUFFIX = " (Staging)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BoMuPo/Application/BoMuPo-Prefix.pch";
 				INFOPLIST_FILE = "BoMuPo/Other-Sources/BoMuPo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Test_Staging;
 		};

@@ -156,6 +156,12 @@
 #define COCOAPODS_VERSION_MINOR_FormatterKit_UnitOfInformationFormatter 7
 #define COCOAPODS_VERSION_PATCH_FormatterKit_UnitOfInformationFormatter 0
 
+// GVMusicPlayerController
+#define COCOAPODS_POD_AVAILABLE_GVMusicPlayerController
+#define COCOAPODS_VERSION_MAJOR_GVMusicPlayerController 0
+#define COCOAPODS_VERSION_MINOR_GVMusicPlayerController 4
+#define COCOAPODS_VERSION_PATCH_GVMusicPlayerController 0
+
 // MZAppearance
 #define COCOAPODS_POD_AVAILABLE_MZAppearance
 #define COCOAPODS_VERSION_MAJOR_MZAppearance 1
